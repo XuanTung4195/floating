@@ -94,9 +94,10 @@ class FloatingPlugin : FlutterPlugin, MethodCallHandler, ActivityAware {
           .setAutoEnterEnabled(false).build())
         result.success(true)
         return
+      } else {
+        result.success(true)
       }
-    } else
-     {
+    } else {
       result.notImplemented()
     }
   }
