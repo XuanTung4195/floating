@@ -78,7 +78,12 @@ class FloatingPlugin : FlutterPlugin, MethodCallHandler, ActivityAware {
             activity.enterPictureInPictureMode(builder.build())
         )
       } else {
-        result.success(activity.enterPictureInPictureMode())
+        if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.N) {
+          activity.enterPictureInPictureMode()
+          result.success(true)
+        } else {
+          result.success(false)
+        }
       }
     } else if (call.method == "pipAvailable") {
       result.success(
